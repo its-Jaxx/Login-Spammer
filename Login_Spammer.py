@@ -72,12 +72,17 @@ names = [
 ]
 
 # random mail endings
-mail = ["@yandex.com", "@gmail.com", "@live.com", "@outlook.com", "@yahoo.com"]
+mail = [
+  "@yandex.com", "@gmail.com", "@live.com", "@outlook.com", "@yahoo.com",
+  "@aol.com", "@protonmail.com", "gmail.se", "@live.se", "@outlook.se",
+  "@yahoo.se"
+]
 
 
 # generate random email address
 def generate_email():
-  return random.choice(names) + random.choice(names) + random.choice(mail)
+  return random.choice(names) + "." + random.choice(names) + random.choice(
+    mail)
 
 
 # generate random password
@@ -90,4 +95,6 @@ def generate_password():
 for i in range(10000):
   data = {"userName": generate_email(), "password": generate_password()}
   response = requests.post("https://example.com", data=data)
-  print(response.status_code)
+  # print(response.status_code)
+
+  print(data)
